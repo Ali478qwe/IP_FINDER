@@ -1,0 +1,17 @@
+{
+  "name": "ali478qwe",
+  "version": "1.0.0",
+  "description": "My Node.js App",
+  "main": "exip.js", 
+  "scripts": {
+    "start": "node exip.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "22.x"
+  },
+  "license": "MIT"
+}
