@@ -1,12 +1,16 @@
-const express = require("express");
-const app = express();
-const serverless = require("serverless-http");
+var express = require('express');
 
-app.get("/", (req, res) => {
-    let userIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-    res.json({ message: "Your IPv4 address is", ip: userIp });
+const app = express();
+const port = 3000;
+app.enable('trust proxy');
+app.use(express.urlencoded({extended:true}));
+//headers['x-forwarded-for']
+app.get('/',(req,res)=>{
+    let userIp = req.ip || req.socket.remoteAddress; 
+    res.send(`Your IPv4 address is ${userIp} `);
+    
 });
 
-// اکسپورت برای Vercel
-module.exports = app;
-module.exports.handler = serverless(app);
+app.listen(port,()=>{
+    console.log(`run http://localhost:${port} `);
+});
